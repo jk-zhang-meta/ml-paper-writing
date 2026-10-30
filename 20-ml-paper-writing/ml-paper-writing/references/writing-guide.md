@@ -28,7 +28,11 @@ The narrative rests on three pillars that must be crystal clear by the end of yo
 
 **The "What"**: One to three specific novel claims fitting within a cohesive theme. Vague contributions like "we study X" fail immediately—reviewers need precise, falsifiable claims.
 
-**The "Why"**: Rigorous empirical evidence that convincingly supports those claims, including strong baselines honestly tuned and experiments that distinguish between competing hypotheses rather than merely showing "decent results."
+**The "Why"**: Support appropriate to the claim. For empirical work this includes
+fair baselines and informative comparisons; for theory it may be a proof under stated
+assumptions. Implementation evidence supports implemented behavior, not unmeasured
+benefits. In a working draft, explicitly distinguish hypotheses from known results.
+This broader routing is the fork's adaptation, not a verbatim quotation from Nanda.
 
 **The "So What"**: Why readers should care, connecting your contribution to problems the community recognizes as important.
 
@@ -38,7 +42,9 @@ The narrative rests on three pillars that must be crystal clear by the end of yo
 
 This applies whether you're presenting a new architecture, a theoretical result, or improved understanding of existing methods—NeurIPS explicitly notes that "originality does not necessarily require an entirely new method."
 
-**Practical Implication**: If you cannot state your contribution in one sentence, you don't yet have a paper. Everything else—experiments, related work, discussion—exists only to support that core claim.
+**Practical exercise**: try expressing the main takeaway in one sentence to focus
+the paper. Difficulty doing so can reveal an unresolved question; it does not prohibit
+an early outline or require inventing a positive result.
 
 ---
 
@@ -69,6 +75,10 @@ Studies of reviewer behavior show:
 ## Abstract Writing Formula
 
 ### Sebastian Farquhar's 5-Sentence Formula
+
+Treat this as a contribution-first option, not a required count or order. A diagnostic,
+theoretical or design paper may need a different opening. Preserve the same scope and
+evidence strength as the Introduction; unknown results remain unknown in the Abstract.
 
 1. **What you achieved**: "We introduce...", "We prove...", "We demonstrate..."
 2. **Why this is hard and important**
@@ -107,38 +117,29 @@ From Zachary Lipton: "If the first sentence can be pre-pended to any ML paper, d
 
 ## Introduction Structure
 
-### Requirements
+### Argument design, not mandatory paragraph slots
 
-- **1-1.5 pages maximum** (in two-column format)
-- **Methods should start by page 2-3**
-- Must include **2-4 bullet contribution list** (max 1-2 lines each)
+Explain the task, consequential limitation, warranted response, and available evidence.
+Their order and granularity depend on the paper. Contribution bullets and compact
+page counts are options, not universal requirements. An Introduction can expose a
+computational constraint, diagnose a failure, change a task assumption, or formulate
+a representation/theory contribution; these routes need different transitions.
 
-### Structure Template
+Use the directly routed references in `SKILL.md`:
 
-```markdown
-1. Opening Hook (2-3 sentences)
-   - State the problem your paper addresses
-   - Why it matters RIGHT NOW
+- `introduction-sentence-design.md`: reader/evidence intake, nine overlapping routes,
+  twenty-three sentence jobs, dependency and inference checks, and a worked repair.
+- `introduction-route-playbook.md`: sentence-level decisions for each route, including
+  findings without a new method, systems constraints, theorem formulations and measurement validity.
+- `introduction-deep-review.md`: CS-first 33-case index, annotation granularity,
+  cross-case findings, evidence boundaries and review coverage.
+- `introduction-worked-examples.md`: critical maps of EOE, ZS-NTTA and Transformer.
+- `introduction-evidence.md`: source locators and the limits of this synthesis.
 
-2. Background/Challenge (1 paragraph)
-   - What makes this problem hard?
-   - What have others tried? Why is it insufficient?
-
-3. Your Approach (1 paragraph)
-   - What do you do differently?
-   - Key insight that enables your contribution
-
-4. Contribution Bullets (2-4 items)
-   - Be specific and falsifiable
-   - Each bullet: 1-2 lines maximum
-
-5. Results Preview (2-3 sentences)
-   - Most impressive numbers
-   - Scope of evaluation
-
-6. Paper Organization (optional, 1-2 sentences)
-   - "Section 2 presents... Section 3 describes..."
-```
+For an outline, state what each paragraph lets the reader conclude, then design the
+sentences needed to earn that conclusion. For revision, diagnose the existing argument
+before replacing it. If evidence is missing, mark the affected claim rather than
+inventing a finding or refusing all early drafting.
 
 ### Contribution Bullets: Good vs Bad
 
@@ -148,7 +149,7 @@ From Zachary Lipton: "If the first sentence can be pre-pended to any ML paper, d
 - We demonstrate that A outperforms B by 15% on benchmark C
 
 **Bad:**
-- We study the problem of X (not a contribution)
+- We study the problem of X (too vague without the question and resulting knowledge)
 - We provide extensive experiments (too vague)
 - We make several contributions to the field (says nothing)
 
@@ -193,9 +194,11 @@ Put familiar information (old) in the topic position for backward linkage; put n
 **Weak**: "Sparse attention was introduced by Child et al. The quadratic complexity of standard attention motivates this work."
 **Strong**: "Standard attention has quadratic complexity. To address this, Child et al. introduced sparse attention."
 
-**Principle 5: One Unit, One Function**
+**Principle 5: Coherent Purpose Within a Unit**
 
-Each unit of discourse (sentence, paragraph, section) should serve a single function. If you have two points, use two units.
+Give each unit a recognizable purpose. A sentence can both credit prior capability
+and qualify its scope, or state a result together with its assumptions. Split unrelated
+claims when that improves comprehension; do not separate a claim from its conditions.
 
 **Principle 6: Articulate Action in the Verb**
 
@@ -219,7 +222,7 @@ Provide context before asking the reader to consider anything new. This applies 
 | Stress Position | Emphasis at sentence end | "Save the best for last" |
 | Topic Position | Context at sentence start | "First things first" |
 | Old Before New | Familiar → unfamiliar | "Build on known ground" |
-| One Unit, One Function | Each paragraph = one point | "One idea per container" |
+| Coherent Purpose | Each unit advances an intelligible takeaway | Keep related conditions; split unrelated claims |
 | Action in Verb | Use verbs, not nominalizations | "Verbs do, nouns sit" |
 | Context Before New | Explain before presenting | "Set the stage first" |
 
@@ -275,19 +278,21 @@ Delete these filler words in almost all cases:
 
 #### Sentence Construction Rules
 
-1. **One idea per sentence** - If struggling to express an idea in one sentence, it needs two
+1. **Manage sentence load** - Split competing claims when helpful, but keep a claim
+   with the condition that makes it true; one sentence may perform compatible jobs.
 2. **No repeated sounds** - Avoid similar-sounding words in the same sentence
 3. **Every sentence adds information** - Delete sentences that merely restate
-4. **Active voice always** - Specify the actor ("We find..." not "It is found...")
+4. **Choose voice for clarity** - Name the actor when it matters; passive voice can
+   preserve a useful topic without hiding responsibility.
 5. **Expand contractions** - "don't" → "do not" for formality
 
 #### Paragraph Architecture
 
-- **First sentence**: State the point clearly
-- **Middle sentences**: Support with evidence
-- **Last sentence**: Reinforce or transition
-
-Don't bury key information in the middle of paragraphs.
+- Establish an entry question or topic, provide the needed explanation/evidence,
+  and leave a clear exit takeaway.
+- A topic-first paragraph and a paragraph building toward a diagnostic inference
+  can both work. Do not force every final sentence to restate the first.
+- Make the next paragraph depend on that takeaway instead of restarting the background.
 
 ---
 
@@ -325,11 +330,9 @@ Don't bury key information in the middle of paragraphs.
 
 ### Vocabulary Signaling
 
-**Avoid words signaling incremental work**:
-- Never: "combine," "modify," "expand," "extend"
-- Instead: "develop," "propose," "introduce"
-
-**Why**: "We combine X and Y" sounds like you stapled two existing ideas together. "We develop a method that leverages X for Y" sounds like genuine contribution.
+Describe the actual contribution: a combination, extension or modification can be
+valuable. Explain the new capability, result or insight and its evidence. Replacing
+an accurate verb with “introduce” does not establish novelty and can obscure credit.
 
 ---
 
@@ -413,9 +416,9 @@ plt.style.use(['science', 'nature'])
 
 | Mistake | Solution |
 |---------|----------|
-| Introduction too long (>1.5 pages) | Move background to Related Work |
-| Methods buried (after page 3) | Front-load contribution, cut intro |
-| Missing contribution bullets | Add 2-4 specific, falsifiable claims |
+| Introduction repeats background without advancing the argument | Remove duplication or move detail; use the actual venue limit |
+| Reader cannot identify the approach | Explain the mechanism earlier once its purpose is clear |
+| Contributions are unclear | State specific supported contributions in prose or bullets as appropriate |
 | Experiments without explicit claims | State what each experiment tests |
 
 ### Writing Mistakes
@@ -457,10 +460,10 @@ Before submitting, verify:
 - [ ] Every experiment supports a specific claim
 
 **Structure**:
-- [ ] Abstract follows 5-sentence formula
-- [ ] Introduction ≤1.5 pages
-- [ ] Methods start by page 2-3
-- [ ] 2-4 contribution bullets included
+- [ ] Abstract and Introduction preserve the same claim scope and evidence strength
+- [ ] Introduction length fits the audience, argument and verified venue requirements
+- [ ] Approach is identifiable without an unexplained jump from problem to modules
+- [ ] Contributions are explicit; bullets are optional unless the venue requires them
 - [ ] Limitations section present
 
 **Writing**:

@@ -1,7 +1,7 @@
 ---
 name: ml-paper-writing
-description: Write publication-ready ML/AI papers for NeurIPS, ICML, ICLR, ACL, AAAI, COLM. Use when drafting papers from research repos, structuring arguments, verifying citations, or preparing camera-ready submissions. For systems venues (OSDI, NSDI, ASPLOS, SOSP), use systems-paper-writing instead.
-version: 1.2.0
+description: Write ML/AI papers for NeurIPS, ICML, ICLR, ACL, AAAI and COLM; design, analyze and revise sentence-level Introduction arguments for computer science and mathematics, including systems, theory and benchmarks. Use when drafting from research repos, structuring arguments, checking citations or preparing camera-ready submissions. For systems venue formatting and templates, use systems-paper-writing.
+version: 1.4.0
 author: Orchestra Research
 license: MIT
 tags: [Academic Writing, NeurIPS, ICML, ICLR, ACL, AAAI, COLM, LaTeX, Paper Writing, Citations, Research]
@@ -12,7 +12,14 @@ dependencies: [semanticscholar, arxiv, habanero, requests]
 
 Expert-level guidance for writing publication-ready papers targeting **NeurIPS, ICML, ICLR, ACL, AAAI, COLM**. This skill combines writing philosophy from top researchers (Nanda, Farquhar, Karpathy, Lipton, Steinhardt) with practical tools: LaTeX templates, citation verification APIs, and conference checklists.
 
-**For systems venues (OSDI, NSDI, ASPLOS, SOSP)**, use the [systems-paper-writing](../systems-paper-writing/) skill, which provides paragraph-level structural blueprints, writing patterns, venue-specific checklists, and LaTeX templates for systems conferences.
+This fork adds evidence-grounded, sentence-level Introduction design, with computer
+science as the primary domain and mathematics as a secondary domain. Upstream
+Orchestra Research authorship and MIT attribution are retained; the new guidance,
+annotations and evaluations are fork-maintainer additions. For Introduction work,
+the task-specific guidance below takes precedence over generic upstream length,
+sentence-count and style defaults. Historical venue advice still needs verification.
+
+**For systems venues (OSDI, NSDI, ASPLOS, SOSP)**, use the [systems-paper-writing](../systems-paper-writing/) skill for venue requirements, templates and full-paper structure. The Introduction argument guidance here also covers systems and mathematical cases; it does not prescribe ML empirical sections for a theorem paper.
 
 ## Core Philosophy: Collaborative Writing
 
@@ -132,13 +139,11 @@ These are high-signal starting points for Related Work—the scientist has alrea
 
 **Step 3: Clarify the Contribution**
 
-Before writing, explicitly confirm with the scientist:
-
-> "Based on my understanding of the repo, the main contribution appears to be [X].
-> The key results show [Y]. Is this the framing you want for the paper,
-> or should we emphasize different aspects?"
-
-**Never assume the narrative—always verify with the human.**
+Use the scientist's explicit thesis and requested scope. If material alternatives
+remain, state a provisional framing and the unresolved choice. Ask a focused question
+only when that choice would change the research claim or task; otherwise deliver the
+authorized draft or outline with clear assumptions. Do not invent findings or require
+a second approval for a thesis the scientist already supplied.
 
 **Step 4: Search for Additional Literature**
 
@@ -234,10 +239,11 @@ Every successful ML paper centers on what Neel Nanda calls "the narrative": a sh
 | Pillar | Description | Example |
 |--------|-------------|---------|
 | **The What** | 1-3 specific novel claims within cohesive theme | "We prove that X achieves Y under condition Z" |
-| **The Why** | Rigorous empirical evidence supporting claims | Strong baselines, experiments distinguishing hypotheses |
+| **The Why** | Support appropriate to the claim | Proof under stated assumptions, controlled measurements, implementation evidence, or explicitly pending evaluation |
 | **The So What** | Why readers should care | Connection to recognized community problems |
 
-**If you cannot state your contribution in one sentence, you don't yet have a paper.**
+Use a one-sentence takeaway as a focusing exercise, not a prerequisite for early
+drafting. An unresolved result can remain a clearly labeled question or hypothesis.
 
 ---
 
@@ -263,9 +269,10 @@ Paper Writing Progress:
 
 **Step 1: Define the One-Sentence Contribution**
 
-**This step requires explicit confirmation from the scientist.**
-
-Before writing anything, articulate and verify:
+Use the scientist's stated thesis and evidence. If the thesis is unsettled, offer a
+provisional framing with its assumptions; ask only when the choice materially changes
+the research claim. Do not block an authorized outline or local edit on a new approval.
+Articulate:
 - What is the single thing your paper contributes?
 - What was not obvious or present before your work?
 
@@ -294,13 +301,40 @@ From Sebastian Farquhar (DeepMind):
 
 **Delete** generic openings like "Large language models have achieved remarkable success..."
 
-**Step 4: Write Introduction (1-1.5 pages max)**
+**Step 4: Design the Introduction's argument, then its sentences**
 
-Must include:
-- 2-4 bullet contribution list (max 1-2 lines each in two-column format)
-- Clear problem statement
-- Brief approach overview
-- Methods should start by page 2-3 maximum
+For outlining, drafting, analyzing or substantively revising an Introduction, read
+[introduction-sentence-design.md](references/introduction-sentence-design.md).
+Select a route from the actual evidence, then connect paragraph takeaways and sentence
+jobs: what each sentence assumes, establishes, qualifies and enables next. Explain
+the warrant into the proposed mechanism, explanatory hypothesis, theorem or measurement.
+
+- For concrete sentence-sequence decisions and suitability limits, read the relevant
+  card in [introduction-route-playbook.md](references/introduction-route-playbook.md).
+  It distinguishes nine overlapping routes and does not require a new method in a
+  phenomenon, audit or theorem paper.
+
+- For sentence-by-sentence paper analysis or examples, also read
+  [introduction-worked-examples.md](references/introduction-worked-examples.md):
+  EOE's complete 29-unit map, selected ZS-NTTA transitions, and the contrasting
+  eleven-sentence Transformer Introduction. Do not impose one case's moves on another.
+- For deeper CS/math comparison, use
+  [introduction-deep-review.md](references/introduction-deep-review.md) to select
+  from 33 fixed-source cases. Full-Introduction reading, individual sentence/formal
+  maps, grouped statements and independent sampled review are counted separately.
+  Load only the relevant corpus lane, not all maps by default.
+- For provenance, applicability or competing writing advice, read
+  [introduction-evidence.md](references/introduction-evidence.md). It distinguishes
+  original sources, practitioner preferences and this fork's synthesis.
+- For a fine-grained outline/audit, provide sentence jobs, dependencies and evidence
+  status. For a prose request, deliver prose; the analysis must not replace it.
+- A working draft may retain explicit unknowns. Do not invent preliminary experiments,
+  causal diagnoses, citations, novelty or results to complete an attractive narrative.
+- Length, contribution bullets and opening order depend on audience, paper and venue.
+  A local wording change needs only the relevant check, not the full workflow.
+
+The upstream Abstract recipe is one option. Its claims, assumptions and evidence
+strength must remain aligned with the Introduction, regardless of sentence order.
 
 **Step 5: Methods Section**
 
@@ -393,7 +427,7 @@ These principles are based on how readers actually process prose. Violating them
 | **Stress position** | Place emphasis at sentence ends | ❌ "Accuracy improves by 15% when using attention" → ✅ "When using attention, accuracy improves by **15%**" |
 | **Topic position** | Put context first, new info after | ✅ "Given these constraints, we propose..." |
 | **Old before new** | Familiar info → unfamiliar info | Link backward, then introduce new |
-| **One unit, one function** | Each paragraph makes one point | Split multi-point paragraphs |
+| **Coherent purpose** | Each paragraph advances an intelligible takeaway | Keep related qualification; split unrelated claims |
 | **Action in verb** | Use verbs, not nominalizations | ❌ "We performed an analysis" → ✅ "We analyzed" |
 | **Context before new** | Set stage before presenting | Explain before showing equation |
 
@@ -414,7 +448,8 @@ These small changes accumulate into significantly clearer prose:
 
 - **Be specific**: ❌ "performance" → ✅ "accuracy" or "latency" (say what you mean)
 - **Eliminate hedging**: Drop "may" and "can" unless genuinely uncertain
-- **Avoid incremental vocabulary**: ❌ "combine," "modify," "expand" → ✅ "develop," "propose," "introduce"
+- **Describe the operation accurately**: combining, modifying or extending can be a
+  contribution; explain the new capability or insight instead of disguising it by word choice.
 - **Delete intensifiers**: ❌ "provides *very* tight approximation" → ✅ "provides tight approximation"
 
 #### Precision Over Brevity (Jacob Steinhardt)
@@ -836,9 +871,11 @@ See [references/citation-workflow.md](references/citation-workflow.md) for compl
 
 Delete first sentence if it could be prepended to any ML paper. Start with your specific contribution.
 
-**Issue: Introduction exceeds 1.5 pages**
+**Issue: Introduction feels long or does not motivate the method**
 
-Split background into Related Work. Front-load contribution bullets. Methods should start by page 2-3.
+Reverse-outline sentence jobs and paragraph takeaways. Remove repeated background,
+move unnecessary technical detail, and repair missing inference bridges. Use the
+actual venue limit and reader needs; 1.5 pages and a bullet list are not universal rules.
 
 **Issue: Experiments lack explicit claims**
 
@@ -947,6 +984,15 @@ We used the AI Research Skills Library~\cite{ai_research_skills} for [experiment
 | Document | Contents |
 |----------|----------|
 | [writing-guide.md](references/writing-guide.md) | Gopen & Swan 7 principles, Ethan Perez micro-tips, word choice |
+| [introduction-sentence-design.md](references/introduction-sentence-design.md) | Route selection, sentence jobs, warrants, transitions, drafting and repair |
+| [introduction-route-playbook.md](references/introduction-route-playbook.md) | Nine conditional routes with sentence-level bridges, suitability and counterexamples |
+| [introduction-deep-review.md](references/introduction-deep-review.md) | CS-first 33-case review protocol, coverage, synthesis, primary guidance and limits |
+| [introduction-corpus-diagnostic.md](references/introduction-corpus-diagnostic.md) | Ten diagnostic, phenomenon and audit cases; complete grouped maps in companion JSONL |
+| [introduction-corpus-methods.md](references/introduction-corpus-methods.md) | Ten architecture, representation and systems cases; sentence maps and body warrants |
+| [introduction-corpus-theory-benchmarks.md](references/introduction-corpus-theory-benchmarks.md) | Ten theorem and measurement cases; mathematical/formal-unit boundaries |
+| [introduction-corpus-contrasts.md](references/introduction-corpus-contrasts.md) | AlphaEvolve, DeepSeek-R1 and Marton: recent CS and mathematical contrasts |
+| [introduction-worked-examples.md](references/introduction-worked-examples.md) | EOE, ZS-NTTA and Transformer argument maps with evidence limits |
+| [introduction-evidence.md](references/introduction-evidence.md) | Primary sources, precise locators, review scope and attribution |
 | [citation-workflow.md](references/citation-workflow.md) | Citation APIs, Python code, BibTeX management |
 | [checklists.md](references/checklists.md) | NeurIPS 16-item, ICML, ICLR, ACL requirements |
 | [reviewer-guidelines.md](references/reviewer-guidelines.md) | Evaluation criteria, scoring, rebuttals |
